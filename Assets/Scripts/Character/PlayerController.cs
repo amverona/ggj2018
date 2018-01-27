@@ -20,7 +20,6 @@ public class PlayerController : Damageable {
 	private float hurtTime = -1f;
 
 	private bool run;
-	private float randomIdx = 0f;
 		
 	public float invincibleInterval = 0.5f;
 	private float invincibleTime = -1f;
@@ -41,11 +40,14 @@ public class PlayerController : Damageable {
 	public BodyParts body;
 
 	public TrackObject flameTracker;
+
+	public GameObject ragdollPrefab;
+
+	public float changeBodyInterval = 1f;
+
+	private float lockInputTime = -1f;
 	
 	//private UnityEngine.AI.NavMeshAgent navMeshAgent;
-
-	public bool lockInput;
-
 
 	void Start() {
 		if (mainCamera == null) {
@@ -58,7 +60,7 @@ public class PlayerController : Damageable {
 	}
 
 	void Update () {
-		if(lockInput) {
+		if(lockInputTime > Time.time) {
 			useNavAgent = false;
 
 			return;
@@ -93,6 +95,21 @@ public class PlayerController : Damageable {
 
 		UpdateAnim();
 	}
+
+    public void OnTriggerEnter(Collider other) {
+        if(other.gameObject.CompareTag("InanimateBody")) {
+			lockInputTime = Time.time + changeBodyInterval;
+
+			lookDirection = other.transform.forward;
+			moveDirection = lookDirection;
+
+			GameObject instance = GameObject.Instantiate(ragdollPrefab, transform.position, transform.rotation);
+			
+			Utils.CopyTransformsRecurse(other.transform, transform);
+			
+			Destroy(other.gameObject);
+		}
+    }
 	
 	public override void Hit(GameObject origin, Vector3 position, float strength) {
 		if (invincibleTime < Time.time) {
@@ -130,12 +147,13 @@ public class PlayerController : Damageable {
 			attackFireballTime = Time.time + attackInterval;
 			cooldownTime = attackFireballTime + cooldownInterval;
 
-			randomIdx = UnityEngine.Random.value;		
+			//ShootFireball();
+
 		} else if (attackBurst) {
 			attackBurstTime = Time.time + attackInterval;
 			cooldownTime = attackBurstTime + cooldownInterval;
 
-			randomIdx = UnityEngine.Random.value;
+			//ShootBurst();
 		}
 	}
 
@@ -147,4 +165,3 @@ public class PlayerController : Damageable {
 		anim.SetBool ("burst", attackBurstTime > Time.time);
 	}
 }
-

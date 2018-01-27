@@ -18,4 +18,8 @@ public class BodyParts : MonoBehaviour {
 	public GameObject legL;
 	public Transform legRBone;
 	public GameObject legR;
+	public Transform handLBone;
+	public GameObject handL;
+	public Transform handRBone;
+	public GameObject handR;
 }
