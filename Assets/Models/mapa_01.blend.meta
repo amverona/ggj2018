@@ -25,6 +25,16 @@ ModelImporter:
     100034: Plane_MeshPart6
     100036: Plane_MeshPart7
     100038: Plane_MeshPart8
+    100040: Altar_001
+    100042: Skeleton_Head
+    100044: Skeleton_Head_001
+    100046: Skeleton_Head_002
+    100048: Skeleton_Head_003
+    100050: Skeleton_L_arm
+    100052: Skeleton_L_arm_001
+    100054: Skeleton_L_arm_002
+    100056: Skeleton_L_arm_003
+    100058: Square
     400000: Altar
     400002: Altar_002
     400004: Altar_003
@@ -45,6 +55,16 @@ ModelImporter:
     400034: Plane_MeshPart6
     400036: Plane_MeshPart7
     400038: Plane_MeshPart8
+    400040: Altar_001
+    400042: Skeleton_Head
+    400044: Skeleton_Head_001
+    400046: Skeleton_Head_002
+    400048: Skeleton_Head_003
+    400050: Skeleton_L_arm
+    400052: Skeleton_L_arm_001
+    400054: Skeleton_L_arm_002
+    400056: Skeleton_L_arm_003
+    400058: Square
     2300000: Altar
     2300002: Altar_002
     2300004: Altar_003
@@ -63,6 +83,16 @@ ModelImporter:
     2300030: Plane_MeshPart6
     2300032: Plane_MeshPart7
     2300034: Plane_MeshPart8
+    2300036: Altar_001
+    2300038: Skeleton_Head
+    2300040: Skeleton_Head_001
+    2300042: Skeleton_Head_002
+    2300044: Skeleton_Head_003
+    2300046: Skeleton_L_arm
+    2300048: Skeleton_L_arm_001
+    2300050: Skeleton_L_arm_002
+    2300052: Skeleton_L_arm_003
+    2300054: Square
     3300000: Altar
     3300002: Altar_002
     3300004: Altar_003
@@ -81,6 +111,16 @@ ModelImporter:
     3300030: Plane_MeshPart6
     3300032: Plane_MeshPart7
     3300034: Plane_MeshPart8
+    3300036: Altar_001
+    3300038: Skeleton_Head
+    3300040: Skeleton_Head_001
+    3300042: Skeleton_Head_002
+    3300044: Skeleton_Head_003
+    3300046: Skeleton_L_arm
+    3300048: Skeleton_L_arm_001
+    3300050: Skeleton_L_arm_002
+    3300052: Skeleton_L_arm_003
+    3300054: Square
     4300000: Altar_004
     4300002: Altar_003
     4300004: Altar_002
@@ -99,14 +139,49 @@ ModelImporter:
     4300030: Cube
     4300032: Cube_006
     4300034: Altar
+    4300036: Skeleton_L_arm_003
+    4300038: Skeleton_L_arm_002
+    4300040: Skeleton_L_arm_001
+    4300042: Skeleton_Head_003
+    4300044: Skeleton_Head_002
+    4300046: Skeleton_Head_001
+    4300048: Altar_001
+    4300050: Square
+    4300052: Skeleton_Head
+    4300054: Skeleton_L_arm
     7400000: Default Take
     9500000: //RootNode
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Caveira_Cenario__Skeleton
+    second: {fileID: 2100000, guid: 3159e9a9e46cae34da5be7595b55a81a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Caveira_Cenario__Skeleton_001
+    second: {fileID: 2100000, guid: 3159e9a9e46cae34da5be7595b55a81a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Material
     second: {fileID: 2100000, guid: 53360442a4bd6104281f2ce935e3dcf5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Monolito_2001
+    second: {fileID: 2100000, guid: ed3c10ec13231e843b58c0fe20779a13, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Monumentos
+    second: {fileID: 2100000, guid: 1a3bced1b348af444945bc46b2ac55dc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Terreno
+    second: {fileID: 2100000, guid: 2f8d14f4517bde24f9e0081948c71a58, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
