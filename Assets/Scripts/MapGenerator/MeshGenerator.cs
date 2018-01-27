@@ -96,7 +96,7 @@ public class MeshGenerator : MonoBehaviour {
 		MeshCollider wallCollider = gameObject.AddComponent<MeshCollider> ();
 		wallCollider.sharedMesh = wallMesh;
 
-		walls.GetComponent<NavMeshSurface>().BuildNavMesh();
+		GetComponent<NavMeshSurface>().BuildNavMesh();
 	}
 
 	void Generate2DColliders() {
