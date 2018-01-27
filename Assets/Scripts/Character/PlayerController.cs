@@ -31,20 +31,19 @@ public class PlayerController : Damageable {
 	public float cooldownInterval = 0.5f;
 	private float cooldownTime = -1f;
 
-	public AttackCollider[] attackColliders;
-
 	private Vector3 desPos;
 	private bool useNavAgent;
 
 	[SerializeField]
 	public BodyParts body;
 
-	public TrackObject flameTracker;
+	public Transform theFlame;
 
 	public GameObject ragdollPrefab;
 
 	public float changeBodyInterval = 1f;
 
+	private float changeBodyTime = -1f;
 	private float lockInputTime = -1f;
 	
 	//private UnityEngine.AI.NavMeshAgent navMeshAgent;
@@ -60,21 +59,13 @@ public class PlayerController : Damageable {
 	}
 
 	void Update () {
-		if(lockInputTime > Time.time) {
-			useNavAgent = false;
-
-			return;
-		}
-
 		if (hurtTime > Time.time) {
 			run = false;
 			moveDirection = Vector3.zero;
+		} else if(lockInputTime > Time.time) {
+			useNavAgent = false;
 		} else {
 			UpdateInput ();
-		}
-
-		foreach (AttackCollider attackCollider in attackColliders) {
-			attackCollider.gameObject.SetActive(attackFireballTime > Time.time);
 		}
 
 		if (useNavAgent && (Vector3.Distance (transform.position, desPos) > 0.1f)) {
@@ -94,22 +85,35 @@ public class PlayerController : Damageable {
 		}
 
 		UpdateAnim();
+
+		CalculateHealth();
 	}
 
     public void OnTriggerEnter(Collider other) {
         if(other.gameObject.CompareTag("InanimateBody")) {
-			lockInputTime = Time.time + changeBodyInterval;
-
-			lookDirection = other.transform.forward;
-			moveDirection = lookDirection;
-
-			GameObject instance = GameObject.Instantiate(ragdollPrefab, transform.position, transform.rotation);
-			
-			Utils.CopyTransformsRecurse(other.transform, transform);
-			
-			Destroy(other.gameObject);
+			TransferBody(other.gameObject);
 		}
     }
+
+	private void TransferBody(GameObject other) {
+		lockInputTime = Time.time + changeBodyInterval;
+		changeBodyTime = lockInputTime;
+
+		lookDirection = other.transform.forward;
+		moveDirection = Vector3.zero;
+
+		GameObject ragdollInstance = GameObject.Instantiate(ragdollPrefab, transform.position, transform.rotation);
+		
+		Utils.CopyTransformsRecurse(other.transform, transform);
+
+		BodyParts ragdollBodyParts = ragdollInstance.GetComponent<BodyParts>();
+
+		theFlame.position = ragdollBodyParts.headBone.transform.position;
+		
+		Destroy(other.gameObject);
+
+		health = maxHealth;
+	}
 	
 	public override void Hit(GameObject origin, Vector3 position, float strength) {
 		if (invincibleTime < Time.time) {
@@ -147,14 +151,40 @@ public class PlayerController : Damageable {
 			attackFireballTime = Time.time + attackInterval;
 			cooldownTime = attackFireballTime + cooldownInterval;
 
-			//ShootFireball();
-
 		} else if (attackBurst) {
 			attackBurstTime = Time.time + attackInterval;
 			cooldownTime = attackBurstTime + cooldownInterval;
-
-			//ShootBurst();
 		}
+	}
+
+	private void CalculateHealth() {
+		float factor = 1f;
+
+		if(run) {
+			factor = 2f;
+		}
+
+		health = health - healthLossFactor * factor * Time.deltaTime;
+
+		if(health <= 0f) {
+			Death();
+		}
+	}
+
+	private void Death() {
+		GameObject ragdollInstance = GameObject.Instantiate(ragdollPrefab, transform.position, transform.rotation);
+
+		Utils.CopyTransformsRecurse(transform, ragdollInstance.transform);
+
+		BodyParts ragdollBodyParts = ragdollInstance.GetComponent<BodyParts>();
+		
+		theFlame.transform.SetParent(null);
+
+		TrackObject theFlameTrack = theFlame.GetComponent<TrackObject>();
+
+		theFlameTrack.target = ragdollBodyParts.headBone.transform;
+
+		Destroy(gameObject);
 	}
 
 	private void UpdateAnim() {
@@ -163,5 +193,6 @@ public class PlayerController : Damageable {
 		anim.SetFloat ("moveV", moveDirection.magnitude);
 		anim.SetBool ("fireball", attackFireballTime > Time.time);
 		anim.SetBool ("burst", attackBurstTime > Time.time);
+		anim.SetFloat ("rise", Mathf.Clamp(changeBodyTime - Time.time, -1f, 1f));
 	}
 }

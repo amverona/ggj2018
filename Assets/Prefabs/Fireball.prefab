@@ -272,6 +272,7 @@ MonoBehaviour:
   pointLightScale: 1
   mesh: {fileID: 4143291938337958}
   meshScale: 0.2
+  rbody: {fileID: 54005074700016720}
   time: 4
   curve:
     serializedVersion: 2
