@@ -20,14 +20,14 @@ public class PlayerController : Damageable {
 	private float hurtTime = -1f;
 
 	private bool run;
-	private bool attack;
 	private float randomIdx = 0f;
 		
 	public float invincibleInterval = 0.5f;
 	private float invincibleTime = -1f;
 
 	public float attackInterval = 1f;
-	private float attackTime = -1f;
+	private float attackFireballTime = -1f;
+	private float attackBurstTime = -1f;
 
 	public float cooldownInterval = 0.5f;
 	private float cooldownTime = -1f;
@@ -36,6 +36,11 @@ public class PlayerController : Damageable {
 
 	private Vector3 desPos;
 	private bool useNavAgent;
+
+	[SerializeField]
+	public BodyParts body;
+
+	public TrackObject flameTracker;
 	
 	//private UnityEngine.AI.NavMeshAgent navMeshAgent;
 
@@ -49,28 +54,25 @@ public class PlayerController : Damageable {
 
 		lookDirection = transform.forward;
 	
-		//navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent> ();
+		//flameTracker.target = body.headBone;
 	}
 
 	void Update () {
 		if(lockInput) {
 			useNavAgent = false;
-			//navMeshAgent.Stop();
 
 			return;
 		}
 
 		if (hurtTime > Time.time) {
 			run = false;
-			attack = false;
 			moveDirection = Vector3.zero;
-			attackTime = -1f;
 		} else {
 			UpdateInput ();
 		}
 
 		foreach (AttackCollider attackCollider in attackColliders) {
-			attackCollider.gameObject.SetActive(attackTime > Time.time);
+			attackCollider.gameObject.SetActive(attackFireballTime > Time.time);
 		}
 
 		if (useNavAgent && (Vector3.Distance (transform.position, desPos) > 0.1f)) {
@@ -108,7 +110,9 @@ public class PlayerController : Damageable {
 		float lookX = Input.GetAxis("Mouse X");
 
 		run = Input.GetKey (KeyCode.LeftShift) || Input.GetKey (KeyCode.RightShift);
-		attack = Input.GetKey (KeyCode.Space) || Input.GetMouseButton (1);
+
+		bool attackFireball = Input.GetMouseButton (0);
+		bool attackBurst = Input.GetMouseButton (1);
 
 		if((Mathf.Abs(inputX) > 0.01) || (Mathf.Abs(inputY) > 0.01))
 			useNavAgent = false;
@@ -120,24 +124,27 @@ public class PlayerController : Damageable {
 
 		lookDirection = Quaternion.Euler(0, lookX, 0) * lookDirection;
 
-		if (attackTime > Time.time) {
+		if ((attackFireballTime > Time.time) || (attackBurstTime > Time.time)) {
 		} else if (cooldownTime > Time.time) {
-		} else if (attack) {
-			attackTime = Time.time + attackInterval;
-			cooldownTime = attackTime + cooldownInterval;
+		} else if (attackFireball) {
+			attackFireballTime = Time.time + attackInterval;
+			cooldownTime = attackFireballTime + cooldownInterval;
+
+			randomIdx = UnityEngine.Random.value;		
+		} else if (attackBurst) {
+			attackBurstTime = Time.time + attackInterval;
+			cooldownTime = attackBurstTime + cooldownInterval;
 
 			randomIdx = UnityEngine.Random.value;
 		}
 	}
 
 	private void UpdateAnim() {
-		anim.SetFloat ("randomIdx", randomIdx);
 		anim.SetBool ("running", run);
 		anim.SetFloat ("moveH", moveDirection.magnitude);
 		anim.SetFloat ("moveV", moveDirection.magnitude);
-		anim.SetBool ("hurting", hurtTime > Time.time);
-		anim.SetBool ("attacking", attackTime > Time.time);
+		anim.SetBool ("fireball", attackFireballTime > Time.time);
+		anim.SetBool ("burst", attackBurstTime > Time.time);
 	}
 }
-
 

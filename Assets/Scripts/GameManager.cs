@@ -17,8 +17,6 @@ public class GameManager : MonoBehaviour {
 	
 	void Update () {
         if (Input.GetKeyDown(KeyCode.Escape)) {
-			Debug.Log("Unlock Cursor");
-
 			Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
 		}
