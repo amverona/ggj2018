@@ -1,0 +1,130 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: SkeletonTopMask
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Armature
+    m_Weight: 0
+  - m_Path: Armature/Column
+    m_Weight: 0
+  - m_Path: Armature/Column/Thigh_L
+    m_Weight: 0
+  - m_Path: Armature/Column/Thigh_L/Leg_L
+    m_Weight: 0
+  - m_Path: Armature/Column/Thigh_L/Leg_L/Foot_L
+    m_Weight: 0
+  - m_Path: Armature/Column/Thigh_R
+    m_Weight: 0
+  - m_Path: Armature/Column/Thigh_R/Leg_R
+    m_Weight: 0
+  - m_Path: Armature/Column/Thigh_R/Leg_R/Foot_R
+    m_Weight: 0
+  - m_Path: Armature/Column/Thorax
+    m_Weight: 1
+  - m_Path: Armature/Column/Thorax/Arm_L
+    m_Weight: 1
+  - m_Path: Armature/Column/Thorax/Arm_L/Forearm_L
+    m_Weight: 1
+  - m_Path: Armature/Column/Thorax/Arm_L/Forearm_L/Hand_L
+    m_Weight: 1
+  - m_Path: Armature/Column/Thorax/Arm_L/Forearm_L/Hand_L/IndexN_L
+    m_Weight: 1
+  - m_Path: Armature/Column/Thorax/Arm_L/Forearm_L/Hand_L/IndexN_L/IndexP_L
+    m_Weight: 1
+  - m_Path: Armature/Column/Thorax/Arm_L/Forearm_L/Hand_L/IndexN_L/IndexP_L/IndexD_L
+    m_Weight: 1
+  - m_Path: Armature/Column/Thorax/Arm_L/Forearm_L/Hand_L/Item_L
+    m_Weight: 1
+  - m_Path: Armature/Column/Thorax/Arm_L/Forearm_L/Hand_L/LittleN_L
+    m_Weight: 1
+  - m_Path: Armature/Column/Thorax/Arm_L/Forearm_L/Hand_L/LittleN_L/LittleP_L
+    m_Weight: 1
+  - m_Path: Armature/Column/Thorax/Arm_L/Forearm_L/Hand_L/LittleN_L/LittleP_L/LittleD_L
+    m_Weight: 1
+  - m_Path: Armature/Column/Thorax/Arm_L/Forearm_L/Hand_L/MiddleN_L
+    m_Weight: 1
+  - m_Path: Armature/Column/Thorax/Arm_L/Forearm_L/Hand_L/MiddleN_L/MiddleP_L
+    m_Weight: 1
+  - m_Path: Armature/Column/Thorax/Arm_L/Forearm_L/Hand_L/MiddleN_L/MiddleP_L/MiddleD_L
+    m_Weight: 1
+  - m_Path: Armature/Column/Thorax/Arm_L/Forearm_L/Hand_L/ThirdN_L
+    m_Weight: 1
+  - m_Path: Armature/Column/Thorax/Arm_L/Forearm_L/Hand_L/ThirdN_L/ThirdP_L
+    m_Weight: 1
+  - m_Path: Armature/Column/Thorax/Arm_L/Forearm_L/Hand_L/ThirdN_L/ThirdP_L/ThirdD_L
+    m_Weight: 1
+  - m_Path: Armature/Column/Thorax/Arm_L/Forearm_L/Hand_L/ThumbN_L
+    m_Weight: 1
+  - m_Path: Armature/Column/Thorax/Arm_L/Forearm_L/Hand_L/ThumbN_L/ThumbP_L
+    m_Weight: 1
+  - m_Path: Armature/Column/Thorax/Arm_L/Forearm_L/Hand_L/ThumbN_L/ThumbP_L/ThumbD_L
+    m_Weight: 1
+  - m_Path: Armature/Column/Thorax/Arm_R
+    m_Weight: 1
+  - m_Path: Armature/Column/Thorax/Arm_R/Forearm_R
+    m_Weight: 1
+  - m_Path: Armature/Column/Thorax/Arm_R/Forearm_R/Hand_R
+    m_Weight: 1
+  - m_Path: Armature/Column/Thorax/Arm_R/Forearm_R/Hand_R/IndexN_R
+    m_Weight: 1
+  - m_Path: Armature/Column/Thorax/Arm_R/Forearm_R/Hand_R/IndexN_R/IndexP_R
+    m_Weight: 1
+  - m_Path: Armature/Column/Thorax/Arm_R/Forearm_R/Hand_R/IndexN_R/IndexP_R/IndexD_R
+    m_Weight: 1
+  - m_Path: Armature/Column/Thorax/Arm_R/Forearm_R/Hand_R/Item_R
+    m_Weight: 1
+  - m_Path: Armature/Column/Thorax/Arm_R/Forearm_R/Hand_R/LittleN_R
+    m_Weight: 1
+  - m_Path: Armature/Column/Thorax/Arm_R/Forearm_R/Hand_R/LittleN_R/LittleP_R
+    m_Weight: 1
+  - m_Path: Armature/Column/Thorax/Arm_R/Forearm_R/Hand_R/LittleN_R/LittleP_R/LittleD_R
+    m_Weight: 1
+  - m_Path: Armature/Column/Thorax/Arm_R/Forearm_R/Hand_R/MiddleN_R
+    m_Weight: 1
+  - m_Path: Armature/Column/Thorax/Arm_R/Forearm_R/Hand_R/MiddleN_R/MiddleP_R
+    m_Weight: 1
+  - m_Path: Armature/Column/Thorax/Arm_R/Forearm_R/Hand_R/MiddleN_R/MiddleP_R/MiddleD_R
+    m_Weight: 1
+  - m_Path: Armature/Column/Thorax/Arm_R/Forearm_R/Hand_R/ThirdN_R
+    m_Weight: 1
+  - m_Path: Armature/Column/Thorax/Arm_R/Forearm_R/Hand_R/ThirdN_R/ThirdP_R
+    m_Weight: 1
+  - m_Path: Armature/Column/Thorax/Arm_R/Forearm_R/Hand_R/ThirdN_R/ThirdP_R/ThirdD_R
+    m_Weight: 1
+  - m_Path: Armature/Column/Thorax/Arm_R/Forearm_R/Hand_R/ThumbN_R
+    m_Weight: 1
+  - m_Path: Armature/Column/Thorax/Arm_R/Forearm_R/Hand_R/ThumbN_R/ThumbP_R
+    m_Weight: 1
+  - m_Path: Armature/Column/Thorax/Arm_R/Forearm_R/Hand_R/ThumbN_R/ThumbP_R/ThumbD_R
+    m_Weight: 1
+  - m_Path: Armature/Column/Thorax/Neck
+    m_Weight: 1
+  - m_Path: Armature/Column/Thorax/Neck/Head
+    m_Weight: 1
+  - m_Path: Armature/Column/Thorax/Neck/Head/Mouth
+    m_Weight: 1
+  - m_Path: Inner_Flame
+    m_Weight: 0
+  - m_Path: Skeleton_Head
+    m_Weight: 0
+  - m_Path: Skeleton_Hips
+    m_Weight: 0
+  - m_Path: Skeleton_L_arm
+    m_Weight: 0
+  - m_Path: Skeleton_L_Leg
+    m_Weight: 0
+  - m_Path: Skeleton_Player_Full
+    m_Weight: 0
+  - m_Path: Skeleton_R_ARM
+    m_Weight: 0
+  - m_Path: Skeleton_R_Leg
+    m_Weight: 0
+  - m_Path: Skeleton_Thorax
+    m_Weight: 0
