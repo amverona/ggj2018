@@ -19,6 +19,8 @@ public class EnemyAI : MonoBehaviour {
 
 	public AudioSource audioSource;
 
+    public static float playTime = -1f;
+
     public void Awake () {
         targets = new List<Transform>();
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -52,9 +54,11 @@ public class EnemyAI : MonoBehaviour {
                     navMeshAgent.SetDestination(navHit.position);
                 //}
 
-                audioSource.Play();
-            } else {
-                audioSource.Pause();
+                if(playTime < Time.time) {
+                    audioSource.Play();
+
+                    playTime = Time.time + audioSource.clip.length;
+                }
             }
         }
 

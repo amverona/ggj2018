@@ -4411,6 +4411,11 @@ Prefab:
       propertyPath: smoothRotSpeed
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 82650101802136452, guid: fe74c067b8ac04656bfde02ad2d05d95,
+        type: 2}
+      propertyPath: spreadCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe74c067b8ac04656bfde02ad2d05d95, type: 2}
   m_IsPrefabParent: 0
