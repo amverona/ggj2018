@@ -1979,7 +1979,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1345848488798588}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.37, y: -5.02, z: -3.73}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4377989515324478}
@@ -2201,7 +2201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5367b3334ceb84458088c8e4f026f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FogVolumeResolution: 575 X 554
+  FogVolumeResolution: 919 X 516
   _BlendMode: 1
   GenerateDepth: 1
   _Downsample: 1
@@ -2274,6 +2274,7 @@ MonoBehaviour:
   characterController: {fileID: 143073590227530634}
   moveDirection: {x: 0, y: 0, z: 0}
   lookDirection: {x: 0, y: 0, z: 0}
+  lookSpeed: 2
   moveSpeed: 0.1
   smoothMoveSpeed: 0.1
   runSpeed: 0.1
@@ -2289,6 +2290,7 @@ MonoBehaviour:
   ragdollPrefab: {fileID: 1204980252148570, guid: b11a054eb67144b3f9b5a526e7d375c4,
     type: 2}
   changeBodyInterval: 1
+  modelRoot: {fileID: 4839444592928312}
 --- !u!124 &124908638603442760
 Behaviour:
   m_ObjectHideFlags: 1

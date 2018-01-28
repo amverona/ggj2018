@@ -8,6 +8,7 @@ public class PlayerController : Damageable {
 
 	public Vector3 moveDirection;
 	public Vector3 lookDirection;
+	public float lookSpeed = 2f;
 	public float moveSpeed = 0.1f;
 	public float smoothMoveSpeed = 0.1f;
 	public float runSpeed = 0.1f;
@@ -45,6 +46,8 @@ public class PlayerController : Damageable {
 
 	private float changeBodyTime = -1f;
 	private float lockInputTime = -1f;
+
+	private List<Transform> clinging;
 	
 	//private UnityEngine.AI.NavMeshAgent navMeshAgent;
 
@@ -109,7 +112,7 @@ public class PlayerController : Damageable {
 		BodyParts ragdollBodyParts = ragdollInstance.GetComponent<BodyParts>();
 
 		theFlame.position = ragdollBodyParts.headBone.transform.position;
-		
+
 		Destroy(other.gameObject);
 
 		health = maxHealth;
@@ -129,6 +132,7 @@ public class PlayerController : Damageable {
 		float inputX = Input.GetAxis("Horizontal");
 		float inputY = Input.GetAxis("Vertical");
 		float lookX = Input.GetAxis("Mouse X");
+		//float lookY = Input.GetAxis("Mouse Y");
 
 		run = Input.GetKey (KeyCode.LeftShift) || Input.GetKey (KeyCode.RightShift);
 
@@ -143,7 +147,8 @@ public class PlayerController : Damageable {
 
 		moveDirection = (forward * inputY + right * inputX) * (run? runSpeed: moveSpeed);
 
-		lookDirection = Quaternion.Euler(0, lookX, 0) * lookDirection;
+		//lookDirection = Quaternion.Euler(lookY, lookX, 0) * lookDirection;
+		lookDirection = Quaternion.Euler(0, lookX * lookSpeed, 0) * lookDirection;
 
 		if ((attackFireballTime > Time.time) || (attackBurstTime > Time.time)) {
 		} else if (cooldownTime > Time.time) {
