@@ -7,9 +7,9 @@ public class EnemySpawner : MonoBehaviour {
 	public Vector3 areaSize;
 	public GameObject prefab;
 	
-	[Range(10,300)]
+	[Range(10,1000)]
 	public int startingAmount;
-	[Range(10,200)]
+	[Range(10,500)]
 	public int minAmount;
 
 	List<GameObject> enemies;
@@ -66,8 +66,8 @@ public class EnemySpawner : MonoBehaviour {
 		//	return;
 		//}
 		NavMeshHit myNavHit;
-		if (NavMesh.SamplePosition(pos, out myNavHit, 20f, NavMesh.AllAreas)) {
-			GameObject enemy = Instantiate(prefab, myNavHit.position + Vector3.up * 0.5f, Quaternion.identity, this.transform);
+		if (NavMesh.SamplePosition(pos, out myNavHit, 20f, NavMesh.AllAreas)) {			
+			GameObject enemy = Instantiate(prefab, myNavHit.position, Quaternion.identity, this.transform);
 			enemies.Add(enemy);
 		} else {
 			Debug.LogWarning("Nothing to hit on this position: " + pos);

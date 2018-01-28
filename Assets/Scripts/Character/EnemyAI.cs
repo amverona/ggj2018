@@ -35,12 +35,20 @@ public class EnemyAI : MonoBehaviour {
 
             transform.LookAt(targetXZ);
 
-            RaycastHit hit;
+            //RaycastHit rayHit;
+            NavMeshHit navHit;
+            NavMeshPath path = new NavMeshPath();
 
-            if(Physics.Raycast(targets[0].position, Vector3.down, out hit)) {
-                Debug.DrawLine(targets[0].position, hit.point, Color.cyan, 1f, false);
+            //if(Physics.Raycast(targets[0].position, Vector3.down, out rayHit)) {                
+                //NavMesh.
+                //navMeshAgent.SetDestination(rayHit.point);
+            //} else            
 
-                navMeshAgent.SetDestination(hit.point);
+            if (navMeshAgent.isOnNavMesh && NavMesh.SamplePosition(targets[0].position, out navHit, 2f, NavMesh.AllAreas)) {
+                //if(NavMesh.CalculatePath(transform.position, navHit.position, NavMesh.AllAreas, path)) {
+                    //navMeshAgent.SetPath(path);
+                    navMeshAgent.SetDestination(navHit.position);
+                //}
             }
         }
 

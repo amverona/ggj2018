@@ -54,6 +54,8 @@ public class PlayerController : Damageable {
 
 	public Transform modelRoot;
 	
+	private bool dead;
+	
 	//private UnityEngine.AI.NavMeshAgent navMeshAgent;
 
 	void Awake() {
@@ -235,11 +237,17 @@ public class PlayerController : Damageable {
 
 		theFlameTrack.target = ragdollBodyParts.headBone.transform;
 
+		dead = true;
+
 		Destroy(gameObject);
 	}
 
 	public void AddGrabEnemy(Transform enemy) {
 		grabbers.Add(enemy);
+	}
+
+	public bool IsDead() {
+		return dead;
 	}
 
 	private void UpdateAnim() {
