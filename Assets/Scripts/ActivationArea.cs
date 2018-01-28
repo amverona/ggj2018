@@ -5,18 +5,27 @@ using UnityEngine;
 public class ActivationArea : MonoBehaviour {
 
 	private Transform parent;
+	private Transform rootParent;
 	private SphereCollider sphere;
 
 	private float baseRadius;
 
-	public void Start() {
+	public void Awake() {
 		parent = transform.parent;
 
 		sphere = GetComponent<SphereCollider>();
 
 		baseRadius = sphere.radius;
-		
+
+		sphere.radius = 0f;
+	}
+
+	public void Start() {
+		rootParent = parent.parent;
+
 		Hide();
+
+		sphere.radius = baseRadius;
 	}
 
     public void OnTriggerEnter(Collider other) {
@@ -41,8 +50,9 @@ public class ActivationArea : MonoBehaviour {
 			return;
 		}
 
-		parent.gameObject.SetActive(true);
+		parent.SetParent(rootParent);
 		transform.SetParent(parent);
+		parent.gameObject.SetActive(true);
 
 		sphere.radius = baseRadius * 1.1f;
 	}
@@ -53,9 +63,9 @@ public class ActivationArea : MonoBehaviour {
 			return;
 		}
 		
-		parent.gameObject.SetActive(false);
-		transform.SetParent(null);
+		transform.SetParent(rootParent);
 		parent.SetParent(transform);
+		parent.gameObject.SetActive(false);
 
 		sphere.radius = baseRadius;
 	}

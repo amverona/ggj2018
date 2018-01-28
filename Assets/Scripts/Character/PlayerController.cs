@@ -55,6 +55,12 @@ public class PlayerController : Damageable {
 	public Transform modelRoot;
 	
 	private bool dead;
+
+	public AudioSource audioSource;
+	public AudioClip transmissionClip;
+	public AudioClip stepClip;
+
+	private float stepClipTime = -1f;
 	
 	//private UnityEngine.AI.NavMeshAgent navMeshAgent;
 
@@ -98,6 +104,11 @@ public class PlayerController : Damageable {
 			}
 		}
 
+		if((moveDirection.magnitude > 0.1f) && (stepClipTime < Time.time)) {
+			audioSource.PlayOneShot(stepClip);
+			stepClipTime = Time.time + 1f;
+		}
+
 		UpdateAnim();
 
 		CalcHealth();
@@ -133,6 +144,8 @@ public class PlayerController : Damageable {
 		Destroy(other.gameObject);
 
 		health = maxHealth;
+
+		audioSource.PlayOneShot(transmissionClip);		
 	}
 	
 	public override void Hit(GameObject origin, Vector3 position, float strength) {

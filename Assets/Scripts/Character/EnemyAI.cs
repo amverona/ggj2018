@@ -17,6 +17,8 @@ public class EnemyAI : MonoBehaviour {
 
     public Transform modelRoot;
 
+	public AudioSource audioSource;
+
     public void Awake () {
         targets = new List<Transform>();
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -49,6 +51,10 @@ public class EnemyAI : MonoBehaviour {
                     //navMeshAgent.SetPath(path);
                     navMeshAgent.SetDestination(navHit.position);
                 //}
+
+                audioSource.Play();
+            } else {
+                audioSource.Pause();
             }
         }
 

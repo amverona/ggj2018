@@ -326,7 +326,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   areaSize: {x: 340, y: 20, z: 350}
   prefab: {fileID: 1928698816241444, guid: ddf67d2a02f5e4ee5b3f706900207f88, type: 2}
-  startingAmount: 600
+  startingAmount: 450
   minAmount: 150
   currentAmount: 0
 --- !u!4 &214525137
