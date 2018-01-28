@@ -11,13 +11,15 @@ public class GameManager : MonoBehaviour {
 	void Awake () {
 /*#if UNITY_EDITOR
 		Cursor.visible = true;
-		Cursor.lockState = CursorLockMode.Confined;
+		Cursor.lockState = CursorLockMode.Confined; 
 //# else*/
 		Cursor.visible = false;
 		Cursor.lockState = CursorLockMode.Locked;
 //#endif
 
 		gameOver.SetActive(false);
+
+		if(player == null) player = Transform.FindObjectOfType<PlayerController>();
 	}
 	
 	void Update () {
