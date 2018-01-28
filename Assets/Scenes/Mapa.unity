@@ -319,7 +319,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2147483647
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -383,35 +383,6 @@ Prefab:
     - target: {fileID: 4912337120306206, guid: fe74c067b8ac04656bfde02ad2d05d95, type: 2}
       propertyPath: m_RootOrder
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 195417272283750460, guid: fe74c067b8ac04656bfde02ad2d05d95,
-        type: 2}
-      propertyPath: m_AutoTraverseOffMeshLink
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 195417272283750460, guid: fe74c067b8ac04656bfde02ad2d05d95,
-        type: 2}
-      propertyPath: m_Height
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 195417272283750460, guid: fe74c067b8ac04656bfde02ad2d05d95,
-        type: 2}
-      propertyPath: m_AutoBraking
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 195417272283750460, guid: fe74c067b8ac04656bfde02ad2d05d95,
-        type: 2}
-      propertyPath: m_Radius
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4839444592928312, guid: fe74c067b8ac04656bfde02ad2d05d95, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0.06
-      objectReference: {fileID: 0}
-    - target: {fileID: 195417272283750460, guid: fe74c067b8ac04656bfde02ad2d05d95,
-        type: 2}
-      propertyPath: m_Speed
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe74c067b8ac04656bfde02ad2d05d95, type: 2}

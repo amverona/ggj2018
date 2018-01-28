@@ -17,10 +17,10 @@ TagManager:
   - 
   - Damage
   - Visibility
-  - 
-  - 
-  - 
-  - 
+  - FogVolumeShadowCaster
+  - FogVolume
+  - FogVolumeSurrogate
+  - FogVolumeUniform
   - 
   - 
   - 
