@@ -10,9 +10,22 @@ public class TrackObject : MonoBehaviour {
 	public bool rotation;
 	public bool scale;
 
+	public bool lockYRot;	
+
 	void LateUpdate () {
+		if(target == null)
+			return;
+
 		if(position) transform.position = target.position;
-		if(rotation) transform.rotation = target.rotation;
+		if(rotation) {
+			if(lockYRot) {
+				Quaternion rotAux = Quaternion.Euler(transform.rotation.eulerAngles.x, -target.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+
+				transform.rotation = rotAux;
+			} else {
+				transform.rotation = target.rotation;
+			}
+		}
 		if(scale) transform.localScale = target.localScale;
 	}
 }

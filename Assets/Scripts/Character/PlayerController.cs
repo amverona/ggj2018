@@ -47,9 +47,18 @@ public class PlayerController : Damageable {
 	private float changeBodyTime = -1f;
 	private float lockInputTime = -1f;
 
-	private List<Transform> clinging;
+	public float fireballHealthLoss = 0.1f;
+	public float burstHealthLoss = 0.1f;
+
+	private List<Transform> grabbers;
+
+	public Transform modelRoot;
 	
 	//private UnityEngine.AI.NavMeshAgent navMeshAgent;
+
+	void Awake() {
+		grabbers = new List<Transform>();
+	}
 
 	void Start() {
 		if (mainCamera == null) {
@@ -89,7 +98,7 @@ public class PlayerController : Damageable {
 
 		UpdateAnim();
 
-		CalculateHealth();
+		CalcHealth();
 	}
 
     public void OnTriggerEnter(Collider other) {
@@ -107,7 +116,13 @@ public class PlayerController : Damageable {
 
 		GameObject ragdollInstance = GameObject.Instantiate(ragdollPrefab, transform.position, transform.rotation);
 		
-		Utils.CopyTransformsRecurse(other.transform, transform);
+		Vector3 prevRootPos = modelRoot.position;
+		Quaternion prevRootRot = modelRoot.rotation;
+
+		Utils.CopyTransformsRecurse(other.transform, modelRoot);
+
+		modelRoot.rotation = prevRootRot;
+		modelRoot.position = prevRootPos;
 
 		BodyParts ragdollBodyParts = ragdollInstance.GetComponent<BodyParts>();
 
@@ -145,7 +160,7 @@ public class PlayerController : Damageable {
 		Vector3 forward = transform.forward;
 		Vector3 right = transform.right;
 
-		moveDirection = (forward * inputY + right * inputX) * (run? runSpeed: moveSpeed);
+		moveDirection = (forward * inputY + right * inputX) * CalcSpeed() ;
 
 		//lookDirection = Quaternion.Euler(lookY, lookX, 0) * lookDirection;
 		lookDirection = Quaternion.Euler(0, lookX * lookSpeed, 0) * lookDirection;
@@ -156,13 +171,34 @@ public class PlayerController : Damageable {
 			attackFireballTime = Time.time + attackInterval;
 			cooldownTime = attackFireballTime + cooldownInterval;
 
+			health -= fireballHealthLoss;
+
 		} else if (attackBurst) {
 			attackBurstTime = Time.time + attackInterval;
 			cooldownTime = attackBurstTime + cooldownInterval;
+
+			health -= burstHealthLoss;
 		}
 	}
 
-	private void CalculateHealth() {
+	private float CalcSpeed() {
+		float speed = (run? runSpeed: moveSpeed);
+
+		for(int i = grabbers.Count -1; i >= 0; i--) {
+			Transform grabber = grabbers[i];
+
+			if(grabber == null) {
+				grabbers.RemoveAt(i);
+				continue;
+			}
+		}
+
+		speed -= speed * Mathf.Clamp(grabbers.Count, 0f, 3f) / 3f;
+
+		return speed;
+	}
+
+	private void CalcHealth() {
 		float factor = 1f;
 
 		if(run) {
@@ -171,7 +207,17 @@ public class PlayerController : Damageable {
 
 		health = health - healthLossFactor * factor * Time.deltaTime;
 
+		body.armR.SetActive(health > 13f);
+		body.legL.SetActive(health > 11f);
+		body.hips.SetActive(health > 9f);
+		body.armL.SetActive(health > 7f);
+		body.thorax.SetActive(health > 5f);
+		body.legR.SetActive(health > 3f);
+		body.head.SetActive(health > 1f);
+
 		if(health <= 0f) {
+			health = 0f;
+
 			Death();
 		}
 	}
@@ -179,7 +225,7 @@ public class PlayerController : Damageable {
 	private void Death() {
 		GameObject ragdollInstance = GameObject.Instantiate(ragdollPrefab, transform.position, transform.rotation);
 
-		Utils.CopyTransformsRecurse(transform, ragdollInstance.transform);
+		Utils.CopyTransformsRecurse(modelRoot, ragdollInstance.transform);
 
 		BodyParts ragdollBodyParts = ragdollInstance.GetComponent<BodyParts>();
 		
@@ -190,6 +236,10 @@ public class PlayerController : Damageable {
 		theFlameTrack.target = ragdollBodyParts.headBone.transform;
 
 		Destroy(gameObject);
+	}
+
+	public void AddGrabEnemy(Transform enemy) {
+		grabbers.Add(enemy);
 	}
 
 	private void UpdateAnim() {

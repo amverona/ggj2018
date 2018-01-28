@@ -11,6 +11,8 @@ public class EnemyAI : MonoBehaviour {
 
 	public Animator anim;
 
+    public GameObject grabPrefab;
+
 	public GameObject ragdollPrefab;
 
     public Transform modelRoot;
@@ -46,10 +48,14 @@ public class EnemyAI : MonoBehaviour {
     }
 
     public void OnTriggerEnter(Collider other) {
-        if(other.gameObject.layer == LayerMask.NameToLayer("Visibility")) {
+        GameObject otherGO = other.gameObject;
+
+        if(otherGO.layer == LayerMask.NameToLayer("Visibility")) {
 			targets.Add(other.transform);
-		} else if(other.gameObject.layer == LayerMask.NameToLayer("Damage")) {
+		} else if(otherGO.layer == LayerMask.NameToLayer("Damage")) {
             Death();
+        } else if(otherGO.CompareTag("Player")) {
+            GrabPlayer(otherGO);
         }
     }
 
@@ -95,6 +101,20 @@ public class EnemyAI : MonoBehaviour {
         BodyParts ragdollBodyParts = ragdollInstance.GetComponent<BodyParts>();
 
         ragdollBodyParts.head.SetActive(false);
+
+		Destroy(gameObject);
+	}
+
+	private void GrabPlayer(GameObject playerGO) {
+		GameObject grabInstance = GameObject.Instantiate(grabPrefab, transform.position, transform.rotation);
+
+        TrackObject tracker = grabInstance.GetComponent<TrackObject>();
+
+        tracker.target = playerGO.transform;
+
+        PlayerController player = playerGO.GetComponent<PlayerController>();
+
+        player.AddGrabEnemy(grabInstance.transform);
 
 		Destroy(gameObject);
 	}

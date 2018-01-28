@@ -2048,17 +2048,17 @@ MonoBehaviour:
   headBone: {fileID: 4362602749363052}
   head: {fileID: 1817720286666682}
   thoraxBone: {fileID: 0}
-  thorax: {fileID: 0}
+  thorax: {fileID: 1396583481674686}
   hipsBone: {fileID: 0}
-  hips: {fileID: 0}
+  hips: {fileID: 1273097857243524}
   armLBone: {fileID: 0}
-  armL: {fileID: 0}
+  armL: {fileID: 1404165760008120}
   armRBone: {fileID: 0}
-  armR: {fileID: 0}
+  armR: {fileID: 1060918312801674}
   legLBone: {fileID: 0}
-  legL: {fileID: 0}
+  legL: {fileID: 1793727253830106}
   legRBone: {fileID: 0}
-  legR: {fileID: 0}
+  legR: {fileID: 1519392258708536}
   handLBone: {fileID: 0}
   handL: {fileID: 0}
   handRBone: {fileID: 0}
