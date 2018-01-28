@@ -35,6 +35,14 @@ ModelImporter:
     100054: Skeleton_L_arm_002
     100056: Skeleton_L_arm_003
     100058: Square
+    100060: Cube_004
+    100062: Cube_005
+    100064: Cube_007
+    100066: Cube_008
+    100068: Cube_009
+    100070: Cube_010
+    100072: Plane_MeshPart9
+    100074: Skeleton_L_arm_004
     400000: Altar
     400002: Altar_002
     400004: Altar_003
@@ -65,6 +73,14 @@ ModelImporter:
     400054: Skeleton_L_arm_002
     400056: Skeleton_L_arm_003
     400058: Square
+    400060: Cube_004
+    400062: Cube_005
+    400064: Cube_007
+    400066: Cube_008
+    400068: Cube_009
+    400070: Cube_010
+    400072: Plane_MeshPart9
+    400074: Skeleton_L_arm_004
     2300000: Altar
     2300002: Altar_002
     2300004: Altar_003
@@ -93,6 +109,14 @@ ModelImporter:
     2300050: Skeleton_L_arm_002
     2300052: Skeleton_L_arm_003
     2300054: Square
+    2300056: Cube_004
+    2300058: Cube_005
+    2300060: Cube_007
+    2300062: Cube_008
+    2300064: Cube_009
+    2300066: Cube_010
+    2300068: Plane_MeshPart9
+    2300070: Skeleton_L_arm_004
     3300000: Altar
     3300002: Altar_002
     3300004: Altar_003
@@ -121,6 +145,14 @@ ModelImporter:
     3300050: Skeleton_L_arm_002
     3300052: Skeleton_L_arm_003
     3300054: Square
+    3300056: Cube_004
+    3300058: Cube_005
+    3300060: Cube_007
+    3300062: Cube_008
+    3300064: Cube_009
+    3300066: Cube_010
+    3300068: Plane_MeshPart9
+    3300070: Skeleton_L_arm_004
     4300000: Altar_004
     4300002: Altar_003
     4300004: Altar_002
@@ -149,6 +181,14 @@ ModelImporter:
     4300050: Square
     4300052: Skeleton_Head
     4300054: Skeleton_L_arm
+    4300056: Cube_010
+    4300058: Cube_009
+    4300060: Cube_008
+    4300062: Cube_007
+    4300064: Cube_005
+    4300066: Cube_004
+    4300068: Skeleton_L_arm_004
+    4300070: Plane_MeshPart9
     7400000: Default Take
     9500000: //RootNode
   externalObjects:
