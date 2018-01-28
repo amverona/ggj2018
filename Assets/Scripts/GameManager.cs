@@ -24,12 +24,22 @@ public class GameManager : MonoBehaviour {
 	
 	void Update () {
         if (Input.GetKeyDown(KeyCode.Escape)) {
+			if (Cursor.visible) {
+#if UNITY_EDITOR
+				UnityEditor.EditorApplication.isPlaying = false;
+#else
+				Application.Quit();
+#endif
+			}
 			Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
+
 		}
 
 		if(player.IsDead() && !gameOver.activeSelf) {
+			Cursor.visible = true;
 			gameOver.SetActive(true);
+			Cursor.lockState = CursorLockMode.None;
 		}
 	}
 }
